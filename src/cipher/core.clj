@@ -20,3 +20,13 @@
   "move uma letra em um dado número de posições"
   [letra chave]
   (to-char (mod (+ chave (to-int letra)) 26)))
+
+(defn caesar-encrypt
+  "encriptando uma palavra w com uma chave k utilizanado a cifra de César"
+  [word key]
+  (apply str (mapv #(shift % key) word)))
+
+(defn caesar-decrypt
+  "decripta uma palavra w com uma chava k utilizando a cifra de César"
+  [word key]
+  (apply str (mapv #(shift % (* -1 key)) word)))

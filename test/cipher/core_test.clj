@@ -34,3 +34,18 @@
          \a     3      \d
          \b     20     \v
          \z     3      \c))
+
+(facts "encriptando uma palavra w com uma chave k utilizanado a cifra de César"
+       (tabular
+         (core/caesar-encrypt ?palavra ?chave) => ?result
+         ?palavra ?chave ?result
+         "apple"  20     "ujjfy"
+         "abc"    3      "def"))
+
+(facts "decripta uma palavra w com uma chave k utilizanado a cifra de César"
+       (tabular
+         (core/caesar-decrypt ?palavra ?chave) => ?result
+         ?palavra ?chave ?result
+         "ujjfy"  20     "apple"
+         "def"    3      "abc"))
+

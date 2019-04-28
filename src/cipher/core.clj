@@ -15,3 +15,8 @@
   [letter-index]
   (let [ascii-a (int \a)]
     (char (+ ascii-a letter-index))))
+
+(defn shift
+  "move uma letra em um dado número de posições"
+  [letra chave]
+  (to-char (mod (+ chave (to-int letra)) 26)))

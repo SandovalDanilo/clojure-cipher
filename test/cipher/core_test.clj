@@ -26,3 +26,11 @@
          1    \b
          2    \c
          3    \d))
+
+(facts "move uma letra em um dado número de posições"
+       (tabular
+         (core/shift ?letra ?chave) => ?result
+         ?letra ?chave ?result
+         \a     3      \d
+         \b     20     \v
+         \z     3      \c))

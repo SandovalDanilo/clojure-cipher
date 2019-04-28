@@ -35,6 +35,14 @@
          \b     20     \v
          \z     3      \c))
 
+(facts "retorna apenas letras de uma frase"
+       (tabular
+         (core/get-letters ?frase) => ?result
+         ?frase           ?result
+         "hello"          [\h \e \l \l \o]
+         "Hello!"         [\h \e \l \l \o]
+         "Hello friend!"  [\h \e \l \l \o \f \r \i \e \n \d]))
+
 (facts "encriptando uma palavra w com uma chave k utilizanado a cifra de César"
        (tabular
          (core/caesar-encrypt ?palavra ?chave) => ?result
@@ -42,7 +50,7 @@
          "apple"  20     "ujjfy"
          "abc"    3      "def"
          "Hello!" 3      "khoor"))
-1
+
 (facts "decripta uma palavra w com uma chave k utilizanado a cifra de César"
        (tabular
          (core/caesar-decrypt ?palavra ?chave) => ?result

@@ -22,6 +22,7 @@
   (to-char (mod (+ chave (to-int letra)) 26)))
 
 (defn get-letters
+  "retorna apenas letras de uma frase"
   [sentence]
   (filterv #(Character/isLetter %) (clojure.string/lower-case sentence)))
 

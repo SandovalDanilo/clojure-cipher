@@ -21,12 +21,16 @@
   [letra chave]
   (to-char (mod (+ chave (to-int letra)) 26)))
 
+(defn get-letters
+  [sentence]
+  (filterv #(Character/isLetter %) (clojure.string/lower-case sentence)))
+
 (defn caesar-encrypt
-  "encriptando uma palavra w com uma chave k utilizanado a cifra de César"
-  [word key]
-  (apply str (mapv #(shift % key) word)))
+  "encriptando uma frase com uma chave utilizanado a cifra de César"
+  [sentence key]
+  (apply str (mapv #(shift % key) (get-letters sentence))))
 
 (defn caesar-decrypt
-  "decripta uma palavra w com uma chava k utilizando a cifra de César"
-  [word key]
-  (apply str (mapv #(shift % (* -1 key)) word)))
+  "decripta uma frase com uma chava utilizando a cifra de César"
+  [sentence key]
+  (apply str (mapv #(shift % (* -1 key)) (get-letters sentence))))

@@ -57,3 +57,17 @@
          ?palavra ?chave ?result
          "ujjfy"  20     "apple"
          "def"    3      "abc"))
+
+(facts "returna um hashmap contendo a quantidade de cada caracter numa string"
+       (tabular
+         (core/count-characters ?frase) => ?result
+         ?frase    ?result
+         "abc"     {\a 1, \b 1, \c 1}
+         "aaabbc"  {\a 3, \b 2, \c 1}))
+
+(facts "retorna as X letras mais frequentes na frase"
+       (tabular
+         (core/most-frequent ?frase ?x) => ?result
+         ?frase       ?x  ?result
+         "xyz"        3   [[\x 1] [\y 1] [\z 1]]
+         "aaaabbbccd" 3   [[\a 4] [\b 3] [\c 2]]))

@@ -35,3 +35,22 @@
   "decripta uma frase com uma chava utilizando a cifra de César"
   [sentence key]
   (apply str (mapv #(shift % (* -1 key)) (get-letters sentence))))
+
+(defn count-characters
+  "returna um hashmap contendo a quantidade de cada caracter numa string"
+  [sentence]
+  (loop [frase       sentence
+         frequencias {}]
+    (if (= (count frase) 0)
+      frequencias
+      (let [letra (first frase)
+            resto (filter #(not= letra %) frase)]
+        (recur resto
+               (assoc frequencias
+                      letra
+                      (count (filter #(= letra %) frase))))))))
+
+(defn most-frequent
+  "retorna as X letras mais frequentes na frase"
+  [frase x]
+  (take x (sort-by second > (count-characters frase))))

@@ -71,3 +71,10 @@
          ?frase       ?x  ?result
          "xyz"        3   [[\x 1] [\y 1] [\z 1]]
          "aaaabbbccd" 3   [[\a 4] [\b 3] [\c 2]]))
+
+(facts "dados dois caracteres, retorna o primeiro encriptado com o segundo"
+       (tabular
+         (core/encrypt-letter ?c1 ?c2) => ?result
+         ?c1 ?c2 ?result
+         \w  \c  \y
+         \u  \i  \c))

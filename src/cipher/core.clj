@@ -54,3 +54,20 @@
   "retorna as X letras mais frequentes na frase"
   [frase x]
   (take x (sort-by second > (count-characters frase))))
+
+(defn encrypt-letter
+  "dados dois caracteres, retorna o primeiro encriptado com o segundo"
+  [c1 c2]
+  (to-char (mod (+ (to-int c1) (to-int c2)) 26)))
+
+(defn encrypt-with-word
+  "encripa uma frase usando uma palavra"
+  [frase chave]
+  (map encrypt-letter frase (cycle chave)))
+
+(def frase1 "welcometoclojurebridge")
+(def frase2 "Welcome to ClojureBridge!")
+(defn vigenere-encrypt
+  "trata e encripa uma frase usando a cifra de Vigenère"
+  [frase chave]
+  (encrypt-with-word (get-letters frase) chave))
